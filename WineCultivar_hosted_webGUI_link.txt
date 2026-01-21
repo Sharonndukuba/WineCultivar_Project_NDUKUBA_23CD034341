@@ -1,0 +1,6 @@
+Name: NDUKUBA SHARON OGOCHUKWU
+Matric Number: 23CD034341
+Machine Learning Algorithm Used: Random Forest Classifier
+Model persistence method used: Joblib
+Live URL of the hosted application:https://winecultivar-project-ndukuba-23cd034341.onrender.com
+GitHub repository link: https://github.com/Sharonndukuba/WineCultivar_Project_NDUKUBA_23CD034341.git
