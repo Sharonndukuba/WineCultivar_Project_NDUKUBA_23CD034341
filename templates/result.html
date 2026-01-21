@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Cultivar Prediction Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="display-4">Prediction Result</h1>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-8 mx-auto">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h3>Predicted Wine Cultivar: {{ prediction }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4>Probability Distribution:</h4>
+                        <div class="list-group">
+                            {% for cultivar, prob in probabilities.items() %}
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ cultivar }}
+                                <span class="badge badge-primary badge-pill">{{ prob }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-8 mx-auto">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h4>Input Values</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for feature, value in zip(features, input_values) %}
+                                <tr>
+                                    <td>{{ feature.replace('_', ' ').title() }}</td>
+                                    <td>{{ value }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4 mb-5">
+            <div class="col-md-12 text-center">
+                <a href="/" class="btn btn-primary">Make Another Prediction</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
